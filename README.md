@@ -12,7 +12,7 @@
 - API used: OpenWeatherMap
     <br>- Link: https://openweathermap.org/
 - Deployed on Vercel
-    <br>- Link: (link will be here)
+    <br>- Link: https://101500729-comp3123-labtest2.vercel.app/
 
 ## Setup
 Follow these steps if you want to run the project yourself <br>

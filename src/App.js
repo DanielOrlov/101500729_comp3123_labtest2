@@ -1,6 +1,8 @@
 // App.js
 import { useEffect, useState } from "react";
 import { WeatherAPI } from "./api";
+import { kelvinToCelsius } from "./util/format";
+import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -92,7 +94,6 @@ function App() {
   // Load default weather on first render (Toronto)
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -136,7 +137,7 @@ function App() {
               </span>
             </div>
 
-            <div className="card-body" style={{background:"lightblue"}}>
+            <div className="card-body" style={{ background: "lightblue" }}>
 
               <div className="d-flex align-items-center mb-3">
                 {weatherInfo.icon && (
@@ -148,7 +149,7 @@ function App() {
                 )}
                 <div>
                   <h3 className="mb-0">
-                    {weatherInfo.temp !== "" ? `${weatherInfo.temp} K` : "--"}
+                    {weatherInfo.temp !== "" ? `${kelvinToCelsius(weatherInfo.temp)} °C` : "--"}
                   </h3>
                   <small className="text-muted text-capitalize">
                     {weatherInfo.description || weatherInfo.main || "No data"}
@@ -162,13 +163,13 @@ function App() {
                 <dt className="col-sm-3">Temperature (min / max)</dt>
                 <dd className="col-sm-9">
                   {weatherInfo.temp_min !== "" && weatherInfo.temp_max !== ""
-                    ? `${weatherInfo.temp_min} K / ${weatherInfo.temp_max} K`
+                    ? `${kelvinToCelsius(weatherInfo.temp_min)} °C / ${kelvinToCelsius(weatherInfo.temp_max)} °C`
                     : "--"}
                 </dd>
 
                 <dt className="col-sm-3">Feels Like</dt>
                 <dd className="col-sm-9">
-                  {weatherInfo.feels_like !== "" ? `${weatherInfo.feels_like} K` : "--"}
+                  {weatherInfo.feels_like !== "" ? `${kelvinToCelsius(weatherInfo.feels_like)} °C` : "--"}
                 </dd>
 
                 <dt className="col-sm-3">Humidity</dt>
